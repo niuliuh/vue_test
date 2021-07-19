@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value='-' @click="add">
+        <span>{{num}}</span>
+        <input type="button" value="+" @click="sub">
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data :{
+            num:1
+        },
+        methods:{
+            add:function(){
+                if(this.num >1){
+                    this.num--;
+                }else{
+                    alert('最小值');
+                }
+            },
+            sub:function(){
+                if(this.num <10){
+                    this.num++;
+                }else{
+                    alert('最大值');
+                }
+            }
+        }
+    })
+</script>
+
+
