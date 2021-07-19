@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+        <style>
+            .active{
+                border:1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+        <div id="app">
+            <h2 v-text="message+'!'"></h2>
+            <h2 v-text="'this is '+info"></h2>
+            <h2>苏州 {{message+"!"}}</h2>
+        </div>
+        <script type="text/javascript">
+            var app = {message:1,info:2}
+            var vm = new Vue({
+                el : '#app',
+                data : app
+            })
+            vm.$data.message = '园林甲天下';
+            vm.$data.info = 'info';
+        </script>
+
+
+        <div id="content">
+            <p v-html="content1"></p>
+            <p v-text='content1'></p>
+        </div>
+        <script type="text/javascript">
+            var content = new Vue({
+                el : '#content',
+                data :{
+                    content1:"<a href ='www.baidu.com'>百度</a>"
+                }
+            })
+        </script>
+        -->
+        <!--
+        <div id="app">
+            <input type="button" value="v-on 指令" v-on:click="doIt">
+            <input type="button" value="v-on 简写" @click='doIt'>
+            <input type="button" value="双击事件" @dblclick='doIt'>
+            <h2 @dblclick='changeFood'>{{food}}</h2>
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el : '#app',
+                data:{
+                    food:'西兰花炒蛋'
+                },
+                methods :{
+                    doIt:function(){
+                        alert('It PHP');
+                    },
+                    changeFood:function(){
+                        // console.log(this.food);
+                        this.food += '好好吃！';
+                    }
+                }
+            })
+        </script>
+        -->
+<!--
+        <div id="app">
+            <button @click="sub">-</button>
+            <span>{{num}}</span>
+            <button @click="add">+</button>
+        </div>
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el : '#app',
+                data :{
+                    num:1
+                },
+                methods:{
+                    add:function(){
+                        if(this.num <10){
+                            this.num++;
+                        }else{
+                            alert('最大值啦');
+                        }
+                    },
+                    sub:function(){
+                        if(this.num >1){
+                            this.num--;
+                        }else{
+                            alert('最小不可点');
+                        }
+                    }
+                }
+            })
+        </script>
+
+
+        <div id="app">
+            <button value="显示状态" @click="changeIsShow">显示状态</button>
+            <input type="button" @click="addAge" value="增加年龄" >
+            <span v-show="isShow" value="显示与隐藏">显示与隐藏</span> 
+            <span v-show='age>=18' valeu='age显示'>age显示</span>
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el : '#app',
+                data:{
+                    isShow:false,
+                    age:15
+                },
+                methods:{
+                    changeIsShow:function(){
+                        this.isShow = !this.isShow;
+                    },
+                    addAge:function(){
+                        this.age ++;
+                    }
+                }
+            })
+        
+        </script>
+
+
+    <div id="app">
+        <input type='button' value="显示或不显示" @click="toggleIsShow">
+        <p v-if="isShow">程序员</p>
+        <p v-show="isShow">v-show</p>
+        <h2 v-if="wendu>20">太热了</h2>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data : {
+                isShow:false,
+                wendu:25
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+
+    <div id="app">
+      <img v-bind:src="imgSrc" alt=""> 
+        <img :src="imgSrc" alt="">
+        <br>
+        <img :src="imgSrc" alt=""  :title="imgTitle+'!'"  :class="isAct?'active':''" @click="toggleAct">
+        <br>
+        <img :src="imgSrc" alt="" :title="imgTittle+'!'" :class="{active:isAct}" @click="toggleAct">
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:"http://www.itheima.com/images/logo.png",
+                imgTitle:"程序员",
+                isAct:false
+            },
+            methods:{
+                toggleAct:function(){
+                    this.isAct = !this.isAct;
+                }
+            }
+        })
+
+    </script>
+
+
+    <div id="app">
+        <input type='button' value='添加数据' @click='add'>
+        <input type='button' value='移除数据' @click='remove'>
+        <ul>
+            <li v-for="(item,index) in arr" >
+                {{index+1}}程序员在{{item}}
+            </li>
+            <h2 v-for="item in veg" v-bind:tilte="item.name">{{item.name}}</h2>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                arr:['北京','上海','广州','深圳','苏州'],
+                veg:[{name:'西兰花炒蛋'},{name:'鸡蛋炒西兰花'}]
+            },
+            methods:{
+                add:function(){
+                    this.veg.push({name:'花菜炒蛋'});
+                },
+                remove:function(){
+                    this.veg.shift();
+                }
+            }
+        })
+    </script>
+
+
+    <div id="app">
+        <button value="点击" @click="doIt(666,'老铁')">点击</button>
+        <input type='text' value='say hi' @keyup.enter='sayHi'>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            methods:{
+                doIt:function(p,p2){
+                    console.log('do it');
+                    alert(p);
+                    alert(p2);
+                },
+                sayHi:function(){
+                    alert('吃了吗');
+                }
+            }
+        })
+    </script>
+-->
+
+    <div id="app">
+        <input type='button' value='编程' @click='setM'>
+        <input type='text' v-model='message' @keyup.enter="getM">
+        <h2>{{message}}</h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'程序员'
+            },
+            methods:{
+                getM:function(){
+                    alert(this.message);
+                },
+                setM:function(){
+                    this.message ='编程';
+                }
+            }
+        })
+    </script>
+
+    </body>
+</html>

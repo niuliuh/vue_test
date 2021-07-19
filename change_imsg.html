@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./change_img/css/index.css" />
+  </head>
+    <body>
+        <div id="mask">
+            <div id="center"></div>
+            <h2 class="title">
+                <img src="./change_img/images/logo.png" alt="">图片
+            </h2>
+            <a href="javascript:void(0)" v-show="index!=0" @click="prev"  class="left" >
+                <img src="./change_img/images/prev.png" alt=""/>
+            </a>
+
+            <img :src="imgArr[index]" alt=""/>
+           
+            <a href="javascript:void(0)" v-show="index<imgArr.length-1" @click="next"  class="right" >
+                <img src="./change_img/images/next.png" alt=""/>
+            </a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <script>
+            var app = new Vue({
+                el:"#mask",
+                data:{
+                    imgArr:[
+                        "./change_img/images/01.jpg",
+                        "./change_img/images/02.jpg",
+                        "./change_img/images/03.jpg",
+                        "./change_img/images/04.jpg",
+                        "./change_img/images/05.jpg",
+                        "./change_img/images/06.jpg",
+                        "./change_img/images/07.jpg",
+                        "./change_img/images/08.jpg",
+                        "./change_img/images/09.jpg",
+                        "./change_img/images/10.jpg"
+                    ],
+                    index:0
+                },
+                methods:{
+                    prev:function(){
+                        this.index--;
+                    },
+                    next:function(){
+                        this.index++;
+                    }
+                }
+            })
+        </script>
+
+
+
+    </body>
+</html>
