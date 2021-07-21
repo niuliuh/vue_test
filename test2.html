@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+        <style>
+            .active{
+                border:1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+<div id="app">
+    <p>v-text:only text {{texts}}</p>
+    <p v-text='texts'></p>
+    <p>v-html:html <span v-html="texts"></span></p>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            buttons:false,
+            texts:"<a href='www.baidu.com'>百度一下</a> "
+        },
+        mehtods:{
+
+        }
+    })
+    vm.texts = '12323123';
+</script>
+
+
+
+
+</body>
+</html>

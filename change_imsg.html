@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./change_img/css/index.css" />
   </head>
     <body>
+        <!--
         <div id="mask">
             <div id="center"></div>
             <h2 class="title">
@@ -53,8 +54,46 @@
                 }
             })
         </script>
+-->
+<div id="app">
+    <div>
+        <img src="change_img/images/prev.png" v-show="index > 0" @click="prev" >
+    </div>
+    <img :src="imgArr[index]">
+    <div>
+        <img src="change_img/images/next.png" v-show="index < imgArr.length-1" @click="next">
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            imgArr:[
+            "./change_img/images/01.jpg",
+                        "./change_img/images/02.jpg",
+                        "./change_img/images/03.jpg",
+                        "./change_img/images/04.jpg",
+                        "./change_img/images/05.jpg",
+                        "./change_img/images/06.jpg",
+                        "./change_img/images/07.jpg",
+                        "./change_img/images/08.jpg",
+                        "./change_img/images/09.jpg",
+                        "./change_img/images/10.jpg"
+            ],
+            index:0
+        },
+        methods:{
+            prev:function(){
+                this.index --;
+            },
+            next:function(){
+                this.index++;
+            }
+        }
+    })
+</script>
 
     </body>
 </html>
